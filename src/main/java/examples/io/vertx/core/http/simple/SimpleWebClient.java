@@ -25,13 +25,13 @@ public class SimpleWebClient extends AbstractVerticle {
         HttpClient httpClient = vertx.createHttpClient();
         System.out.println(" Created a new SimpleWebClient ");
 
-        httpClient.headNow(8080, "192.168.1.125", "/", hresp -> {
+        httpClient.headNow(8080, "localhost", "/", hresp -> {
             System.out.println("Got Head response " + hresp.statusCode());
             hresp.bodyHandler(body -> {
                 System.out.println("Got body data " + body.toString("ISO-8859-1"));
             });
         });
-        httpClient.getNow(8080, "192.168.1.125", "/", resp -> {
+        httpClient.getNow(8080, "localhost", "/", resp -> {
             System.out.println("Got response " + resp.statusCode());
             resp.bodyHandler(body -> {
                 System.out.println("Got data " + body.toString("ISO-8859-1"));
