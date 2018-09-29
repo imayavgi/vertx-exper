@@ -4,6 +4,8 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.DeploymentOptions;
 import examples.io.vertx.util.Runner;
 
+import java.util.concurrent.atomic.AtomicLong;
+
 /**
  * An example illustrating how worker verticles can be deployed and how to interact with them.
  * <p>
@@ -23,6 +25,18 @@ public class MainVerticle extends AbstractVerticle {
         vertx
                 .deployVerticle("examples.io.vertx.core.verticle.worker.WorkerVerticle",
                         new DeploymentOptions().setWorker(true));
+
+
+        AtomicLong count = new AtomicLong(10);
+        long now = System.currentTimeMillis();
+        System.out.println("MAIN Starting periodic on " + Thread.currentThread());
+        vertx.setPeriodic(1000, id -> {
+            if (count.decrementAndGet() < 0) {
+                vertx.cancelTimer(id);
+            }
+            System.out.println("MAIN Periodic fired " + Thread.currentThread() + " after " + (System.currentTimeMillis() - now) + " ms");
+        });
+
 
         long timerID = vertx.setPeriodic(5000, id -> {
             System.out.println("And every second this is printed");

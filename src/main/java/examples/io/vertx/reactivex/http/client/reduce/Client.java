@@ -39,7 +39,7 @@ public class Client extends AbstractVerticle {
         map(buffer -> buffer.toString("UTF-8")).
 
       // Get a single buffer
-        subscribe(data -> System.out.println("Server content " + data));
+        subscribe(data -> System.out.println("SimpleWebServer content " + data));
 
     // End request
     req.end();

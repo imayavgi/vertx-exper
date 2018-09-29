@@ -33,12 +33,12 @@ public class Client extends AbstractVerticle {
       .rxSend();
 
     // Fire the request
-    request.subscribe(resp -> System.out.println("Server content " + resp.body().message));
+    request.subscribe(resp -> System.out.println("SimpleWebServer content " + resp.body().message));
 
     // Again
-    request.subscribe(resp -> System.out.println("Server content " + resp.body().message));
+    request.subscribe(resp -> System.out.println("SimpleWebServer content " + resp.body().message));
 
     // And again
-    request.subscribe(resp -> System.out.println("Server content " + resp.body().message));
+    request.subscribe(resp -> System.out.println("SimpleWebServer content " + resp.body().message));
   }
 }

@@ -6,11 +6,11 @@ import examples.io.vertx.util.Runner;
 /*
  * @author <a href="http://tfox.org">Tim Fox</a>
  */
-public class Server extends AbstractVerticle {
+public class SimpleWebServer extends AbstractVerticle {
 
     // Convenience method so you can run it in your IDE
     public static void main(String[] args) {
-        Runner.runExample(Server.class);
+        Runner.runExample(SimpleWebServer.class);
     }
 
     @Override
